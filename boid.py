@@ -9,8 +9,8 @@ pygame.init()
 screen_width_height = pygame.display.Info()
 
 # Define constants
-SCREEN_WIDTH = screen_width_height.current_w * 0.7
-SCREEN_HEIGHT = screen_width_height.current_h * 0.7
+SCREEN_WIDTH = screen_width_height.current_w 
+SCREEN_HEIGHT = screen_width_height.current_h 
 
 # Set up the display
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -25,7 +25,7 @@ class Boid:
         self.acceleration = [0, 0]
         self.position = [x,y]
         self.image = "Boid.png"
-        self.image = pygame.transform.scale(pygame.image.load(self.image), (16, 16))
+        self.image = pygame.transform.scale(pygame.image.load(self.image), (8, 8))
 
     def draw(self, surface):
         angle = math.atan2(self.velocity[1], self.velocity[0])
@@ -41,7 +41,7 @@ class Boid:
         for other in boids:
             if other is self:
                 continue
-            if (self.position[0] - other.position[0])**2 + (self.position[1]- other.position[1])**2 < 20**2:
+            if (self.position[0] - other.position[0])**2 + (self.position[1]- other.position[1])**2 < 15**2:
                 ax += self.position[0] - other.position[0]
                 ay += self.position[1] - other.position[1]
                 count += 1
@@ -61,7 +61,7 @@ class Boid:
                 ax /= norm_a
                 ay /= norm_a
 
-        self.acceleration = [ax, ay]
+        self.acceleration = [ax * 1.2, ay * 1.2]
 
     def align(self, boids):
         x = 0
@@ -89,8 +89,8 @@ class Boid:
                 dx /= mag
                 dy /= mag
 
-            self.acceleration[0] += dx * 0.05
-            self.acceleration[1] += dy * 0.05
+            self.acceleration[0] += dx * 0.2
+            self.acceleration[1] += dy * 0.2
 
     def cohesion(self, boids):
         x = 0
@@ -99,7 +99,7 @@ class Boid:
         for other in boids:
             if other is self:
                 continue
-            if (self.position[0] - other.position[0])**2 + (self.position[1]- other.position[1])**2 < 100**2:
+            if (self.position[0] - other.position[0])**2 + (self.position[1]- other.position[1])**2 < 200**2:
                 x += other.position[0]
                 y += other.position[1]
                 count += 1
@@ -117,8 +117,8 @@ class Boid:
                 dx /= mag
                 dy /= mag
 
-            self.acceleration[0] += dx * 0.05
-            self.acceleration[1] += dy * 0.05
+            self.acceleration[0] += dx * 0.07
+            self.acceleration[1] += dy * 0.07
 
 
     def recalc(self):
@@ -137,7 +137,7 @@ class Boid:
         self.velocity[1] += self.acceleration[1]
 
 
-        max_speed = 4
+        max_speed = 7
         speed = (self.velocity[0]**2 + self.velocity[1]**2)**0.5
         if speed > max_speed:
             self.velocity[0] = (self.velocity[0]/speed) * max_speed
@@ -152,7 +152,7 @@ class Boid:
         
 
 def main():
-    num_of_boids = 60 # Highest Boids possible at 30 FPS is 80
+    num_of_boids = 100 # Highest Boids possible at 30 FPS is 80
     boids = []
 
     for i in range(num_of_boids):
