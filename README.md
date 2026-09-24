@@ -1,6 +1,43 @@
-# Boids
-Python code for boid AI
+# Boids Simulation
 
-This is a simple simulation for boid behaviour, the code attatched includes an object oriented approach to implement boids with separation, cohesion and alignment behaviours. In order to run this code you will need the libraries: pygame, math and random. On my machine this program runs best at ~70 boids.
+A Python implementation of Craig Reynolds-style flocking behaviour using
+object-oriented programming and Pygame.
+
+## Demo
+
+![Boids simulation](Boid.png)
+
+## Behaviour
+
+Each boid follows three local rules:
+
+- Separation — avoid crowding nearby boids
+- Alignment — steer towards the average heading of neighbours
+- Cohesion — move towards the centre of nearby boids
+
+The combination of these simple rules produces emergent flocking behaviour.
+
+## Technologies
+
+- Python
+- Pygame
+- Object-oriented programming
+
+## Running the Project
+
+1. Clone the repository
+2. Install Pygame:
+
+   pip install pygame
+
+3. Run:
+
+   python boid.py
+
+## What I Learned
+
+This project gave me experience implementing object-oriented simulation
+logic and experimenting with how simple local rules can produce complex
+group behaviour.
 
 ![image](https://github.com/user-attachments/assets/5f285866-6166-4a8d-a4de-962717094f66)
