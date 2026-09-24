@@ -5,7 +5,7 @@ object-oriented programming and Pygame.
 
 ## Demo
 
-![Boids simulation](Boid.png)
+![image](https://github.com/user-attachments/assets/5f285866-6166-4a8d-a4de-962717094f66)
 
 ## Behaviour
 
@@ -40,4 +40,4 @@ This project gave me experience implementing object-oriented simulation
 logic and experimenting with how simple local rules can produce complex
 group behaviour.
 
-![image](https://github.com/user-attachments/assets/5f285866-6166-4a8d-a4de-962717094f66)
+
